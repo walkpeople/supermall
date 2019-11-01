@@ -5,17 +5,10 @@ import config from "@/common/config";
 
 export function getHomeMultidata() {
   return request({
-    url: config.localhost,
-    method: "post",
-    data: "swiper"
-  });
-}
-
-export function getRecommendData() {
-  return request({
-    url: config.localhost,
-    method: "post",
-    data: "recommend"
+    //url: config.localhost,
+    url: '/home/multidata',
+    //method: "post",
+    //data: "swiper"
   });
 }
 

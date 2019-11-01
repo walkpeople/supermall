@@ -14,7 +14,7 @@
           v-for="(item, index) in slidesCount"
           class="bar"
           for=""
-          :class="{ active: index === currentIndex - 1 }"
+          :class="{ swiperActive: index === currentIndex - 1 }"
           v-bind:key="index"
         ></label>
       </slot>
@@ -47,7 +47,7 @@ export default {
     return {
       totalWidth: 0, //swiper-item 的宽度
       currentIndex: 0, //当前index
-      swiperStyle: null, //swiper的样式
+      swiperStyle: {}, //swiper的样式
       scrolling: false, //是否正在滚动动画
       slidesCount: 0 // 元素个数
     };
@@ -176,12 +176,12 @@ export default {
     window.setTimeout(() => {
       this.handleDom();
       this.startTimer();
-    }, 100);
+    }, 500);
   }
 };
 </script>
 
-<style>
+<style scoped>
 #swiper-container {
   overflow: hidden;
   position: relative;
@@ -203,7 +203,10 @@ export default {
   width: 50px;
   height: 10px;
   border: 2px solid #a4b0be;
-	margin-right: 8px;
+  margin-right: 8px;
   cursor: pointer;
+}
+.swiperActive {
+  background: #95a5a6;
 }
 </style>

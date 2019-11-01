@@ -1,9 +1,9 @@
 <template>
   <div class="recommends">
-    <div class="recommend-item" v-for="link in recommends">
+    <div class="recommend-item" v-for="item in recommends">
       <a href="">
-        <img :src="link" alt="" />
-        <div>推荐一</div>
+        <img :src="item.image" alt="" />
+        <div>{{item.title}}</div>
       </a>
     </div>
   </div>
@@ -21,7 +21,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .recommends {
   width: 100%;
   display: flex;
@@ -30,7 +30,6 @@ export default {
 }
 
 .recommend-item {
-  flex: 1;
   text-align: center;
   font-size: 12px;
   margin: 2px 12px;

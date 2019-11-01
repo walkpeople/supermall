@@ -1,13 +1,13 @@
-<template>
-  <div>
-    <h2>Category</h2>
-  </div>
+<template lang="html">
+
 </template>
 
 <script>
 export default {
-  name: 'Category'
+  name: 'Category',
 }
 </script>
 
-<style></style>
+<style lang="css" scoped >
+
+</style>

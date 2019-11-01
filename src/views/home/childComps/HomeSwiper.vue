@@ -1,8 +1,10 @@
 <template>
   <div id="swiper">
     <swiper>
-      <swiperItem v-for="link in banners">
-        <img :src="link" alt="" />
+      <swiperItem v-for="item in banners">
+        <a :href="item.link">
+          <img :src="item.image" alt="">
+        </a>
       </swiperItem>
     </swiper>
   </div>
@@ -26,8 +28,5 @@ export default {
 };
 </script>
 
-<style>
-#swiper{
-	padding-top: 44px;
-}
+<style scoped>
 </style>

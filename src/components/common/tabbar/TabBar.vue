@@ -10,8 +10,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #tab-bar {
+  height: 49px;
+  z-index: 4;
   display: flex;
   align-items: center;
   background-color: #f6f6f6;
