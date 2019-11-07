@@ -15,6 +15,10 @@ export default {
     probeType: {
       type: Number,
       default: 0
+    },
+    pullUpLoad: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -25,23 +29,41 @@ export default {
   mounted: function() {
     this.scroll = new BScroll(this.$refs.wrapper, {
       click: true,
-      probeType: this.probeType
+      probeType: this.probeType,
+      pullUpLoad: this.pullUpLoad,
     });
+    if (this.probeType === 2 || this.probeType === 3) {
+      this.scroll.on("scroll", position => {
+        this.$emit("scroll", position);
+      });
+    }
+
+    if (this.pullUpLoad) {
+      this.scroll.on("pullingUp", () => {
+        this.$emit("loadMoreImages");
+      });
+    }
+    // scroll 将实时的位置发送出去
     this.scroll.on('scroll', position => {
+      // {x: 0, y: 0} 格式
       this.$emit('scroll', position)
-    });
+    } )
   },
   methods: {
-    scrollTo: function (x, y, time) {
-      let t = time;
-      if (typeof(time) === 'undefined') {
-        t = 300;
-      }
-      this.scroll.scrollTo(x, y, t)
+    scrollTo: function(x, y, time=300) {
+      this.scroll && this.scroll.scrollTo(x, y, time);
+    },
+    finishPullUp: function() {
+      this.scroll && this.scroll.finishPullUp();
+    },
+    refresh: function() {
+      this.scroll && this.scroll.refresh();
+    },
+    getScrollY: function() {
+      return this.scroll? this.scroll.y: 0;
     }
   }
 };
 </script>
 
-<style lang="css" scoped>
-</style>
+<style lang="css" scoped></style>

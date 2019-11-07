@@ -1,15 +1,19 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 
-Vue.use(Vuex)
+import mutation from "./mutation";
+import action from "./action";
+import getter from './getter';
+
+// 安装插件
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    cartList: []
   },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+  mutations: mutation,
+  actions: action,
+  getters: getter,
+  modules: {}
+});

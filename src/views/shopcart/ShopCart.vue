@@ -1,13 +1,26 @@
 <template>
   <div>
-    <h2>ShopCart</h2>
+    <cart-nav-bar class="nav-bar"></cart-nav-bar>
+    <cart-list></cart-list>
+    <bottom-bar></bottom-bar>
   </div>
 </template>
 
 <script>
+// child components
+import CartNavBar from "./childComps/CartNavBar";
+import CartList from './childComps/CartList';
+import BottomBar from './childComps/BottomBar'
+
 export default {
-  name: 'ShopCart'
-}
+  name: "ShopCart",
+  components: {
+    CartNavBar,
+    CartList,
+    BottomBar,
+  },
+};
 </script>
 
-<style></style>
+<style scoped>
+</style>

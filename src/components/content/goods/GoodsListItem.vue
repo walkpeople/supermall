@@ -1,6 +1,6 @@
 <template lang="html">
-  <div class="goods-item">
-    <img :src="goodsItem.show.img" alt="" />
+  <div class="goods-item" @click="itemClick">
+    <img :src="showImage" alt="" @load="loadImage" />
     <div class="goods-info">
       <p>{{ goodsItem.title }}</p>
       <span class="price"> {{ goodsItem.price }}</span>
@@ -16,6 +16,20 @@ export default {
     goodsItem: {
       type: Object,
       default: {}
+    }
+  },
+  methods: {
+    loadImage() {
+      //发送给总线
+      this.$bus.$emit("loadImage");
+    },
+    itemClick() {
+      this.$router.push("/detail/"+this.goodsItem.iid);
+    }
+  },
+  computed: {
+    showImage: function () {
+      return this.goodsItem.image || this.goodsItem.show.img
     }
   }
 };
@@ -67,5 +81,4 @@ export default {
   height: 14px;
   background: url("~assets/img/common/collect.svg") 0 0/14px 14px ;
 }
-
 </style>
